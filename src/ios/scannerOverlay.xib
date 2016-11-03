@@ -20,12 +20,12 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="logobranco.png" id="Ih3-F4-KCf">
-                            <frame key="frameInset" minX="50.23%" width="101" height="40" maxY="8"/>
+                            <frame key="frameInset" minX="50.23%" width="101" height="40" maxY="9"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xto-SI-jN0">
-                            <frame key="frameInset" minX="264" minY="28" width="56" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <frame key="frameInset" minY="72.97%" width="42" height="38" maxX="8"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button" image="menu.png"/>
                             <connections>
                                 <action selector="pressMenu:" destination="-1" eventType="touchUpInside" id="sk9-C1-0hl"/>
@@ -39,46 +39,46 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ALARMES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fBV-gp-syw">
-                            <frame key="frameInset" minX="112" minY="109" width="96" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="VIDEOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c0r-1B-MRx">
-                            <frame key="frameInset" minX="216" minY="109" width="96" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <frame key="frameInset" minX="50.00%" minY="108" width="96" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EPT-64-jKV">
-                            <frame key="frameInset" minX="8" minY="8" width="96" height="96"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <frame key="frameInset" minX="8" width="96" height="96" maxY="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <state key="normal" title="Button" image="bulas.png"/>
                             <connections>
                                 <action selector="pressBulas:" destination="-1" eventType="touchUpInside" id="iK7-I8-mfD"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l1X-5G-1Md">
-                            <frame key="frameInset" minX="112" minY="8" width="96" height="96"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <frame key="frameInset" minX="50.00%" width="96" height="96" maxY="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <state key="normal" title="Button" image="alarmes.png"/>
                             <connections>
                                 <action selector="pressAlarmes:" destination="-1" eventType="touchUpInside" id="ftK-ua-FSl"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xp6-Mh-Oxc">
-                            <frame key="frameInset" minX="216" minY="8" width="96" height="96"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BULAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K6d-4u-uTo">
+                            <frame key="frameInset" minX="8" minY="108" width="96" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xp6-Mh-Oxc">
+                            <frame key="frameInset" width="96" height="96" maxX="8" maxY="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <state key="normal" image="videos.png"/>
                             <connections>
                                 <action selector="pressVideos:" destination="-1" eventType="touchUpInside" id="Emt-13-ljF"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="BULAS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K6d-4u-uTo">
-                            <frame key="frameInset" minX="8" minY="108" width="96" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="VIDEOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c0r-1B-MRx">
+                            <frame key="frameInset" minY="108" width="96" height="21" maxX="8"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -96,17 +96,17 @@
                 </imageView>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
-            <point key="canvasLocation" x="48" y="118"/>
+            <point key="canvasLocation" x="47" y="117"/>
         </view>
     </objects>
     <resources>
-        <image name="alarmes.png" width="200" height="200"/>
+        <image name="alarmes.png" width="1010" height="1010"/>
         <image name="barcode.png" width="120" height="120"/>
-        <image name="bulas.png" width="200" height="200"/>
-        <image name="logobranco.png" width="200" height="80"/>
-        <image name="menu.png" width="249" height="149"/>
+        <image name="bulas.png" width="1010" height="1010"/>
+        <image name="logobranco.png" width="1051" height="419"/>
+        <image name="menu.png" width="512" height="512"/>
         <image name="qrcode.png" width="120" height="119"/>
-        <image name="videos.png" width="200" height="201"/>
+        <image name="videos.png" width="1010" height="1010"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
