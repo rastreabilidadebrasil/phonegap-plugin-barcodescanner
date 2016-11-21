@@ -835,7 +835,7 @@ parentViewController:(UIViewController*)parentViewController
 }
 
 - (IBAction)pressAlarmes:(id)sender {
-    [self.processor barcodeScanRedirect:@"Alarms"];
+    [self.processor barcodeScanRedirect:@"Alertas"];
 }
 
 - (IBAction)pressBulas:(id)sender {
