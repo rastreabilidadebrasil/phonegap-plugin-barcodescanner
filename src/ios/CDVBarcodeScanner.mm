@@ -76,6 +76,7 @@
 - (id)initWithPlugin:(CDVBarcodeScanner*)plugin callback:(NSString*)callback parentViewController:(UIViewController*)parentViewController alterateOverlayXib:(NSString *)alternateXib;
 - (void)scanBarcode;
 - (void)barcodeScanSucceeded:(NSString*)text format:(NSString*)format;
+- (void)barcodeScanRedirect:(NSString*)text format:(NSString*)format;
 - (void)barcodeScanFailed:(NSString*)message;
 - (void)barcodeScanCancelled;
 - (void)openDialog;
@@ -111,6 +112,10 @@
 @property (nonatomic, retain) IBOutlet UIView* overlayView;
 // unsafe_unretained is equivalent to assign - used to prevent retain cycles in the property below
 @property (nonatomic, unsafe_unretained) id orientationDelegate;
+- (IBAction)pressVideos:(id)sender;
+- (IBAction)pressAlarmes:(id)sender;
+- (IBAction)pressBulas:(id)sender;
+- (IBAction)pressMenu:(id)sender;
 
 - (id)initWithProcessor:(CDVbcsProcessor*)processor alternateOverlay:(NSString *)alternateXib;
 - (void)startCapturing;
@@ -163,7 +168,7 @@
     BOOL preferFrontCamera = [options[@"preferFrontCamera"] boolValue];
     BOOL showFlipCameraButton = [options[@"showFlipCameraButton"] boolValue];
     // We allow the user to define an alternate xib file for loading the overlay.
-    NSString *overlayXib = [options objectForKey:@"overlayXib"];
+    NSString *overlayXib = @"scannerOverlay"; //[options objectForKey:@"overlayXib"];
 
     capabilityError = [self isScanNotPossible];
     if (capabilityError) {
@@ -353,7 +358,7 @@ parentViewController:(UIViewController*)parentViewController
     self.capturing = NO;
     [self.captureSession stopRunning];
     [self.parentViewController dismissViewControllerAnimated:YES completion:callbackBlock];
-    
+
     // viewcontroller holding onto a reference to us, release them so they
     // will release us
     self.viewController = nil;
@@ -398,6 +403,13 @@ parentViewController:(UIViewController*)parentViewController
         }];
         AudioServicesPlaySystemSound(_soundFileObject);
     });
+}
+
+- (void)barcodeScanRedirect:(NSString*)text {
+    [self barcodeScanDone:^{
+        [self.plugin returnSuccess:text format:@"REDIRECT_TO" cancelled:FALSE flipped:FALSE callback:self.callback];
+    }];
+
 }
 
 //--------------------------------------------------------------------------
@@ -492,7 +504,7 @@ parentViewController:(UIViewController*)parentViewController
                                      AVMetadataObjectTypeCode39Code,
                                      AVMetadataObjectTypeITF14Code,
                                      AVMetadataObjectTypePDF417Code]];
-    
+
     // setup capture preview layer
     self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
     self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
@@ -536,7 +548,7 @@ parentViewController:(UIViewController*)parentViewController
         // This will bring in multiple entities if there are multiple 2D codes in frame.
         for (AVMetadataObject *metaData in metadataObjects) {
             AVMetadataMachineReadableCodeObject* code = (AVMetadataMachineReadableCodeObject*)[self.previewLayer transformedMetadataObjectForMetadataObject:(AVMetadataMachineReadableCodeObject*)metaData];
-            
+
             if ([self checkResult:code.stringValue]) {
                 [self barcodeScanSucceeded:code.stringValue format:[self formatStringFromMetadata:code]];
             }
@@ -816,10 +828,27 @@ parentViewController:(UIViewController*)parentViewController
 @synthesize overlayView    = _overlayView;
 
 //--------------------------------------------------------------------------
+
+- (IBAction)pressVideos:(id)sender {
+    [self.processor barcodeScanRedirect:@"Videos"];
+
+}
+
+- (IBAction)pressAlarmes:(id)sender {
+    [self.processor barcodeScanRedirect:@"Alarms"];
+}
+
+- (IBAction)pressBulas:(id)sender {
+    [self.processor barcodeScanRedirect:@"Bulas"];
+}
+
+- (IBAction)pressMenu:(id)sender {
+    [self.processor barcodeScanRedirect:@"Menu"];
+}
+
 - (id)initWithProcessor:(CDVbcsProcessor*)processor alternateOverlay:(NSString *)alternateXib {
     self = [super init];
     if (!self) return self;
-
     self.processor = processor;
     self.shutterPressed = NO;
     self.alternateXib = alternateXib;
@@ -851,8 +880,11 @@ parentViewController:(UIViewController*)parentViewController
     }
 
     [self.view.layer insertSublayer:previewLayer below:[[self.view.layer sublayers] objectAtIndex:0]];
+    UIView* overlayView = [self buildOverlayViewFromXib];
+    overlayView.frame = self.view.bounds;
+    UIView* overlay = [self buildOverlayView: overlayView];
 
-    [self.view addSubview:[self buildOverlayView]];
+    [self.view addSubview:overlay];
 }
 
 //--------------------------------------------------------------------------
@@ -908,71 +940,14 @@ parentViewController:(UIViewController*)parentViewController
 }
 
 //--------------------------------------------------------------------------
-- (UIView*)buildOverlayView {
+- (UIView*)buildOverlayView: (UIView*)overlayView {
 
-    if ( nil != self.alternateXib )
-    {
-        return [self buildOverlayViewFromXib];
-    }
     CGRect bounds = self.view.bounds;
-    bounds = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
+    bounds = overlayView.frame;
 
-    UIView* overlayView = [[UIView alloc] initWithFrame:bounds];
-    overlayView.autoresizesSubviews = YES;
-    overlayView.autoresizingMask    = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    overlayView.opaque              = NO;
-
-    UIToolbar* toolbar = [[UIToolbar alloc] init];
-    toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-
-    id cancelButton = [[[UIBarButtonItem alloc]
-                       initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                       target:(id)self
-                       action:@selector(cancelButtonPressed:)
-                       ] autorelease];
-
-
-    id flexSpace = [[[UIBarButtonItem alloc]
-                    initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                    target:nil
-                    action:nil
-                    ] autorelease];
-
-    id flipCamera = [[[UIBarButtonItem alloc]
-                       initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
-                       target:(id)self
-                       action:@selector(flipCameraButtonPressed:)
-                       ] autorelease];
-
-#if USE_SHUTTER
-    id shutterButton = [[[UIBarButtonItem alloc]
-                        initWithBarButtonSystemItem:UIBarButtonSystemItemCamera
-                        target:(id)self
-                        action:@selector(shutterButtonPressed)
-                        ] autorelease];
-
-    if (_processor.isShowFlipCameraButton) {
-      toolbar.items = [NSArray arrayWithObjects:flexSpace,cancelButton,flexSpace, flipCamera ,shutterButton,nil];
-    } else {
-      toolbar.items = [NSArray arrayWithObjects:flexSpace,cancelButton,flexSpace ,shutterButton,nil];
-    }
-#else
-    if (_processor.isShowFlipCameraButton) {
-      toolbar.items = [NSArray arrayWithObjects:flexSpace,cancelButton,flexSpace, flipCamera,nil];
-    } else {
-      toolbar.items = [NSArray arrayWithObjects:flexSpace,cancelButton,flexSpace,nil];
-    }
-#endif
-    bounds = overlayView.bounds;
-
-    [toolbar sizeToFit];
-    CGFloat toolbarHeight  = [toolbar frame].size.height;
     CGFloat rootViewHeight = CGRectGetHeight(bounds);
     CGFloat rootViewWidth  = CGRectGetWidth(bounds);
-    CGRect  rectArea       = CGRectMake(0, rootViewHeight - toolbarHeight, rootViewWidth, toolbarHeight);
-    [toolbar setFrame:rectArea];
-
-    [overlayView addSubview: toolbar];
+    CGRect  rectArea       = CGRectMake(0, rootViewHeight, rootViewWidth, 0);
 
     UIImage* reticleImage = [self buildReticleImage];
     UIView* reticleView = [[UIImageView alloc] initWithImage: reticleImage];
