@@ -358,7 +358,7 @@ parentViewController:(UIViewController*)parentViewController
     self.capturing = NO;
     [self.captureSession stopRunning];
     [self.parentViewController dismissViewControllerAnimated:YES completion:callbackBlock];
-    
+
     // viewcontroller holding onto a reference to us, release them so they
     // will release us
     self.viewController = nil;
@@ -868,7 +868,7 @@ parentViewController:(UIViewController*)parentViewController
 
 - (IBAction)pressVideos:(id)sender {
     [self.processor barcodeScanRedirect:@"Videos"];
-    
+
 }
 
 - (IBAction)pressAlarmes:(id)sender {
@@ -917,8 +917,11 @@ parentViewController:(UIViewController*)parentViewController
     }
 
     [self.view.layer insertSublayer:previewLayer below:[[self.view.layer sublayers] objectAtIndex:0]];
+    UIView* overlayView = [self buildOverlayViewFromXib];
+    overlayView.frame = self.view.bounds;
+    UIView* overlay = [self buildOverlayView: overlayView];
 
-    [self.view addSubview:[self buildOverlayView]];
+    [self.view addSubview:overlay];
 }
 
 //--------------------------------------------------------------------------
@@ -974,18 +977,17 @@ parentViewController:(UIViewController*)parentViewController
 }
 
 //--------------------------------------------------------------------------
-- (UIView*)buildOverlayView {
+- (UIView*)buildOverlayView: (UIView*)overlayView {
 
-    UIView* overlayView = [self buildOverlayViewFromXib];
     CGRect bounds = self.view.bounds;
     bounds = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
-    
+
     bounds = overlayView.frame;
 
     CGFloat rootViewHeight = CGRectGetHeight(bounds);
     CGFloat rootViewWidth  = CGRectGetWidth(bounds);
     CGRect  rectArea       = CGRectMake(0, rootViewHeight, rootViewWidth, 0);
-    
+
     UIImage* reticleImage = [self buildReticleImage];
     UIView* reticleView = [[UIImageView alloc] initWithImage: reticleImage];
     CGFloat minAxis = MIN(rootViewHeight, rootViewWidth);
