@@ -107,6 +107,7 @@
 //------------------------------------------------------------------------------
 @interface CDVbcsViewController : UIViewController <CDVBarcodeScannerOrientationDelegate> {}
 @property (nonatomic, retain) CDVbcsProcessor*  processor;
+@property (retain, nonatomic) IBOutlet UIButton *menuButton;
 @property (nonatomic, retain) NSString*        alternateXib;
 @property (nonatomic)         BOOL             shutterPressed;
 @property (nonatomic, retain) IBOutlet UIView* overlayView;
@@ -119,7 +120,7 @@
 
 - (id)initWithProcessor:(CDVbcsProcessor*)processor alternateOverlay:(NSString *)alternateXib;
 - (void)startCapturing;
-- (UIView*)buildOverlayView;
+- (UIView*)buildOverlayView: (UIView*)overlayView;
 - (UIImage*)buildReticleImage;
 - (void)shutterButtonPressed;
 - (IBAction)cancelButtonPressed:(id)sender;
@@ -826,6 +827,7 @@ parentViewController:(UIViewController*)parentViewController
 @synthesize shutterPressed = _shutterPressed;
 @synthesize alternateXib   = _alternateXib;
 @synthesize overlayView    = _overlayView;
+@synthesize menuButton     = _menuButton;
 
 //--------------------------------------------------------------------------
 
@@ -941,6 +943,7 @@ parentViewController:(UIViewController*)parentViewController
 
 //--------------------------------------------------------------------------
 - (UIView*)buildOverlayView: (UIView*)overlayView {
+    [self.menuButton setTitle:@"\uf1c3" forState: UIControlStateNormal];
 
     CGRect bounds = self.view.bounds;
     bounds = overlayView.frame;
@@ -1035,7 +1038,7 @@ parentViewController:(UIViewController*)parentViewController
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskAll;
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
