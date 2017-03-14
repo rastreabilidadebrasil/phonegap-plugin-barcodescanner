@@ -29,6 +29,7 @@
       <resource-file src="src/ios/logobranca.png"/>
       <resource-file src="src/ios/flip_camera.png"/>
       <resource-file src="src/ios/logobranco.png"/>
+      <resource-file src="src/ios/caution_sign.png"/>
       <resource-file src="src/ios/alarmes.png"/>
       <resource-file src="src/ios/qrcode.png"/>
       <resource-file src="src/ios/barcode.png"/>
