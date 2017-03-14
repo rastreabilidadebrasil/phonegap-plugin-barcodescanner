@@ -947,7 +947,7 @@ bool isErrorButtonShown = false;
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     NSLog(@"Buscando por %@",self.searchTextField.text);
-    [self.processor barcodeScanSucceededByText: self.searchTextField.text];
+    [self.processor sendResultBackWithFormat:self.searchTextField.text format:@"QUERY"];
     [self.searchTextField resignFirstResponder];
     return YES;
 }
