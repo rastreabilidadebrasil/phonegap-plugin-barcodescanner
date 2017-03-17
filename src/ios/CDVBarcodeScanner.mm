@@ -109,6 +109,7 @@
     @property (nonatomic, retain) CDVbcsProcessor*  processor;
     @property (retain, nonatomic) IBOutlet UIButton *menuButton;
     @property (retain, nonatomic) IBOutlet UIButton *searchTextButton;
+    @property (retain, nonatomic) IBOutlet UIButton *reportErrorButton;
     @property (nonatomic, retain) NSString*        alternateXib;
     @property (nonatomic)         BOOL             shutterPressed;
     @property (nonatomic, retain) IBOutlet UIView* overlayView;
@@ -842,6 +843,7 @@ parentViewController:(UIViewController*)parentViewController
     @synthesize overlayView    = _overlayView;
     @synthesize menuButton     = _menuButton;
     @synthesize searchTextButton     = _searchTextButton;
+    @synthesize reportErrorButton = _reportErrorButton;
 
     //--------------------------------------------------------------------------
 
@@ -905,6 +907,7 @@ parentViewController:(UIViewController*)parentViewController
     self.tapRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:self.tapRecognizer];
     isErrorButtonShown = NO;
+
 }
 
 - (void)handleSingleTap:(UITapGestureRecognizer *) sender
@@ -1050,6 +1053,8 @@ bool isErrorButtonShown = false;
 - (UIView*)buildOverlayView: (UIView*)overlayView {
     [self.menuButton setTitle:@"\uf3cf" forState: UIControlStateNormal];
     [self.searchTextButton setTitle:@"\uf4a5" forState: UIControlStateNormal];
+    [self.reportErrorButton setTitle:@"\uf3a5" forState: UIControlStateNormal];
+
 
 
     CGRect bounds = self.view.bounds;

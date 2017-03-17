@@ -18,6 +18,7 @@
                 <outlet property="erroReportView" destination="EjF-tE-Se9" id="lGD-Et-QeH"/>
                 <outlet property="menuButton" destination="xto-SI-jN0" id="YXK-Bq-lxw"/>
                 <outlet property="overlayView" destination="1" id="9"/>
+                <outlet property="reportErrorButton" destination="Xp6-Mh-O2c" id="vap-vn-fAk"/>
                 <outlet property="scrollviewTextSearch" destination="7RR-3P-Ehm" id="PYQ-qH-hsn"/>
                 <outlet property="searchTextButton" destination="Xp6-Mh-O1c" id="unR-Hr-JdS"/>
                 <outlet property="searchTextField" destination="ye7-vQ-vzY" id="k85-ZJ-KVG"/>
@@ -47,7 +48,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.38823529410000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" id="7RR-3P-Ehm">
                     <rect key="frame" x="0.0" y="65" width="414" height="50"/>
@@ -57,39 +58,44 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <subviews>
-                                <textField clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome/GTIN do medicamento" clearsOnBeginEditing="YES" minimumFontSize="17" id="ye7-vQ-vzY">
-                                    <rect key="frame" x="8" y="12" width="300" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome/GTIN do medicamento" clearsOnBeginEditing="YES" minimumFontSize="17" id="ye7-vQ-vzY">
+                                    <rect key="frame" x="8" y="12" width="325" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="tintColor" red="0.0094177294164268822" green="0.46811024698813358" blue="0.9800126903553299" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="2Gn-7L-wbD"/>
                                     </connections>
                                 </textField>
-                                <view contentMode="bottomRight" misplaced="YES" layoutMarginsFollowReadableWidth="YES" id="La5-NQ-mC2">
-                                    <rect key="frame" x="366" y="0.0" width="50" height="50"/>
+                                <view opaque="NO" contentMode="bottomRight" misplaced="YES" layoutMarginsFollowReadableWidth="YES" id="La5-NQ-mC2">
+                                    <rect key="frame" x="376" y="0.0" width="40" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xp6-Mh-O2c">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xp6-Mh-O2c">
+                                            <rect key="frame" x="1" y="2" width="36" height="48"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <state key="normal" image="caution_sign.png"/>
+                                            <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="24"/>
+                                            <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="\uf3a5"/>
                                             <connections>
                                                 <action selector="pressError:" destination="-1" eventType="touchUpInside" id="Emt-13-l2F"/>
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
-                                <view contentMode="scaleToFill" misplaced="YES" id="c9z-vy-Mn5">
-                                    <rect key="frame" x="315" y="0.0" width="50" height="50"/>
+                                <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" id="c9z-vy-Mn5">
+                                    <rect key="frame" x="336" y="0.0" width="40" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xp6-Mh-O1c">
-                                            <rect key="frame" x="13" y="14" width="21" height="23"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="50"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="26"/>
                                             <state key="normal" title="\uf4a5"/>
@@ -98,10 +104,9 @@
                                             </connections>
                                         </button>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.018457749858498573" green="0.48952192068099976" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.0" green="0.38823529411764707" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <view hidden="YES" contentMode="bottomRight" misplaced="YES" layoutMarginsFollowReadableWidth="YES" id="EjF-tE-Se9">
                             <rect key="frame" x="414" y="0.0" width="1" height="50"/>
@@ -128,7 +133,6 @@
         </view>
     </objects>
     <resources>
-        <image name="caution_sign.png" width="200" height="200"/>
         <image name="logobranca.png" width="200" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
