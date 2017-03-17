@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CDVbcsViewController">
             <connections>
                 <outlet property="erroReportView" destination="EjF-tE-Se9" id="lGD-Et-QeH"/>
+                <outlet property="flashButton" destination="9hH-UD-RXb" id="vIO-YF-snf"/>
                 <outlet property="homeButton" destination="Yov-ur-QHN" id="gEK-zF-7UY"/>
                 <outlet property="menuButton" destination="xto-SI-jN0" id="YXK-Bq-lxw"/>
                 <outlet property="overlayView" destination="1" id="9"/>
@@ -137,6 +138,15 @@
                         </view>
                     </subviews>
                 </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9hH-UD-RXb">
+                    <rect key="frame" x="158" y="652" width="98" height="64"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="37"/>
+                    <state key="normal" title="\uf2e8"/>
+                    <connections>
+                        <action selector="toogleCamera:" destination="-1" eventType="touchUpInside" id="hfX-OU-zjr"/>
+                    </connections>
+                </button>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="46" y="116"/>

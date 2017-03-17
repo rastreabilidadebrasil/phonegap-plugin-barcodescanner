@@ -110,6 +110,7 @@
     @property (retain, nonatomic) IBOutlet UIButton *menuButton;
     @property (retain, nonatomic) IBOutlet UIButton *searchTextButton;
     @property (retain, nonatomic) IBOutlet UIButton *homeButton;
+    @property (retain, nonatomic) IBOutlet UIButton *flashButton;
     @property (retain, nonatomic) IBOutlet UIButton *reportErrorButton;
     @property (nonatomic, retain) NSString*        alternateXib;
     @property (nonatomic)         BOOL             shutterPressed;
@@ -846,6 +847,7 @@ parentViewController:(UIViewController*)parentViewController
     @synthesize searchTextButton     = _searchTextButton;
     @synthesize reportErrorButton = _reportErrorButton;
     @synthesize homeButton = _homeButton;
+    @synthesize flashButton = _flashButton;
 
     //--------------------------------------------------------------------------
 
@@ -898,6 +900,33 @@ parentViewController:(UIViewController*)parentViewController
 
 - (IBAction)pressMenu:(id)sender {
     [self.processor barcodeScanRedirect:@"Menu"];
+}
+
+bool flashOn = NO;
+
+- (IBAction)toogleCamera:(id)sender{
+    // check if flashlight available
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil) {
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        if ([device hasTorch] && [device hasFlash]){
+
+            [device lockForConfiguration:nil];
+            if (flashOn) {
+                [device setTorchMode:AVCaptureTorchModeOff];
+                [device setFlashMode:AVCaptureFlashModeOff];
+                flashOn = NO;
+                [self.flashButton setTitle:@"\uf2e8" forState: UIControlStateNormal];
+            } else {
+                [device setTorchMode:AVCaptureTorchModeOn];
+                [device setFlashMode:AVCaptureFlashModeOn];
+                flashOn = YES; //define as a variable/property if you need to know status
+                [self.flashButton setTitle:@"\uf2e9" forState: UIControlStateNormal];
+
+            }
+            [device unlockForConfiguration];
+        }
+    }
 }
 
 - (IBAction)pressSearch:(id)sender {
@@ -1062,6 +1091,8 @@ bool isErrorButtonShown = false;
     [self.searchTextButton setTitle:@"\uf4a5" forState: UIControlStateNormal];
     [self.reportErrorButton setTitle:@"\uf3a5" forState: UIControlStateNormal];
     [self.homeButton setTitle:@"\uf30c" forState: UIControlStateNormal];
+    [self.flashButton setTitle:@"\uf2e8" forState: UIControlStateNormal];
+
 
 
     CGRect bounds = self.view.bounds;
