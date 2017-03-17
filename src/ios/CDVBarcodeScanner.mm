@@ -109,6 +109,7 @@
     @property (nonatomic, retain) CDVbcsProcessor*  processor;
     @property (retain, nonatomic) IBOutlet UIButton *menuButton;
     @property (retain, nonatomic) IBOutlet UIButton *searchTextButton;
+    @property (retain, nonatomic) IBOutlet UIButton *homeButton;
     @property (retain, nonatomic) IBOutlet UIButton *reportErrorButton;
     @property (nonatomic, retain) NSString*        alternateXib;
     @property (nonatomic)         BOOL             shutterPressed;
@@ -844,11 +845,17 @@ parentViewController:(UIViewController*)parentViewController
     @synthesize menuButton     = _menuButton;
     @synthesize searchTextButton     = _searchTextButton;
     @synthesize reportErrorButton = _reportErrorButton;
+    @synthesize homeButton = _homeButton;
 
     //--------------------------------------------------------------------------
 
 - (IBAction)pressVideos:(id)sender {
     [self.processor barcodeScanRedirect:@"Videos"];
+
+}
+
+- (IBAction)pressHome:(id)sender {
+    [self.processor barcodeScanRedirect:@"Home"];
 
 }
 
@@ -881,7 +888,7 @@ parentViewController:(UIViewController*)parentViewController
 
     [alert addAction:yesButton];
     [alert addAction:noButton];
-
+    //
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -1054,7 +1061,7 @@ bool isErrorButtonShown = false;
     [self.menuButton setTitle:@"\uf3cf" forState: UIControlStateNormal];
     [self.searchTextButton setTitle:@"\uf4a5" forState: UIControlStateNormal];
     [self.reportErrorButton setTitle:@"\uf3a5" forState: UIControlStateNormal];
-
+    [self.homeButton setTitle:@"\uf30c" forState: UIControlStateNormal];
 
 
     CGRect bounds = self.view.bounds;

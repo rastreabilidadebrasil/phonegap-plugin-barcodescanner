@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CDVbcsViewController">
             <connections>
                 <outlet property="erroReportView" destination="EjF-tE-Se9" id="lGD-Et-QeH"/>
+                <outlet property="homeButton" destination="Yov-ur-QHN" id="gEK-zF-7UY"/>
                 <outlet property="menuButton" destination="xto-SI-jN0" id="YXK-Bq-lxw"/>
                 <outlet property="overlayView" destination="1" id="9"/>
                 <outlet property="reportErrorButton" destination="Xp6-Mh-O2c" id="vap-vn-fAk"/>
@@ -40,11 +41,20 @@
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xto-SI-jN0">
                             <rect key="frame" x="6" y="26" width="37" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="37"/>
                             <state key="normal" title="\uf3cf"/>
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="-1" eventType="touchUpInside" id="5gH-ts-Sbc"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Yov-ur-QHN">
+                            <rect key="frame" x="360" y="26" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <fontDescription key="fontDescription" name="Ionicons" family="Ionicons" pointSize="34"/>
+                            <state key="normal" title="\uf3cf"/>
+                            <connections>
+                                <action selector="pressHome:" destination="-1" eventType="touchUpInside" id="GkW-ZM-fpf"/>
                             </connections>
                         </button>
                     </subviews>
