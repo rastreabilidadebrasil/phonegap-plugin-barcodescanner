@@ -23,7 +23,7 @@
     </config-file>
       <config-file target="*-Info.plist" parent="CFBundleLocalizations">
           <array>
-              <string>es</string>
+              <string>en</string>
               <string>pt-BR</string>
           </array>
       </config-file>
