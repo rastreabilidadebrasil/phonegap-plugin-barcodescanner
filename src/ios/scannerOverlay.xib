@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CDVbcsViewController">
             <connections>
                 <outlet property="erroReportView" destination="EjF-tE-Se9" id="lGD-Et-QeH"/>
+                <outlet property="errorReportButton" destination="Uyd-aN-7ZK" id="JOz-WL-CtO"/>
                 <outlet property="flashButton" destination="9hH-UD-RXb" id="vIO-YF-snf"/>
                 <outlet property="homeButton" destination="Yov-ur-QHN" id="gEK-zF-7UY"/>
                 <outlet property="menuButton" destination="xto-SI-jN0" id="YXK-Bq-lxw"/>
@@ -126,6 +127,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Uyd-aN-7ZK">
                                     <rect key="frame" x="0.0" y="10" width="104" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                     <state key="normal" title="Reportar Erro">
                                         <color key="titleColor" red="0.99963909390000005" green="1" blue="0.99975615740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>

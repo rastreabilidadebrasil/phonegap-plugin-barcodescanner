@@ -118,6 +118,7 @@
     // unsafe_unretained is equivalent to assign - used to prevent retain cycles in the property below
     @property (nonatomic, unsafe_unretained) id orientationDelegate;
     @property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+    @property (retain, nonatomic) IBOutlet UIButton *errorReportButton;
     @property (strong, nonatomic) IBOutlet UIView *searchTextView;
     @property (strong, nonatomic) IBOutlet UIView *erroReportView;
     @property (strong, nonatomic) IBOutlet UIScrollView *scrollviewTextSearch;
@@ -864,7 +865,7 @@ parentViewController:(UIViewController*)parentViewController
 - (IBAction)pressErrorReport:(id)sender {
     [self hideReportErroButton];
     UIAlertController * alert = [UIAlertController
-                                 alertControllerWithTitle:@"Conte-nos o que aconteceu"
+                                 alertControllerWithTitle:NSLocalizedString(@"WhatsHappen", @"")
                                  message:@""
                                  preferredStyle:UIAlertControllerStyleAlert];
 
@@ -874,7 +875,7 @@ parentViewController:(UIViewController*)parentViewController
     }];
 
     UIAlertAction* yesButton = [UIAlertAction
-                                actionWithTitle:@"Enviar"
+                                actionWithTitle:NSLocalizedString(@"ButtonSend",@"")
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction * action) {
                                     UITextField *textField = alert.textFields[0];
@@ -882,7 +883,7 @@ parentViewController:(UIViewController*)parentViewController
                                 }];
 
     UIAlertAction* noButton = [UIAlertAction
-                               actionWithTitle:@"Cancelar"
+                               actionWithTitle:NSLocalizedString(@"ButtonCancel", @"")
                                style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action) {
                                    //Handle no, thanks button
@@ -1092,6 +1093,10 @@ bool isErrorButtonShown = false;
     [self.reportErrorButton setTitle:@"\uf3a5" forState: UIControlStateNormal];
     [self.homeButton setTitle:@"\uf30c" forState: UIControlStateNormal];
     [self.flashButton setTitle:@"\uf2e8" forState: UIControlStateNormal];
+
+    self.searchTextField.placeholder = NSLocalizedString(@"MedicineName", @"");
+
+    [self.errorReportButton setTitle:NSLocalizedString(@"ReportError",@"") forState: UIControlStateNormal];
 
 
 

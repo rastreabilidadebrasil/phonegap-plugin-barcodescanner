@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  MEDiD
+
+  Created by fabiano gaetani on 22/03/17.
+
+*/
+
+"MedicineName"="Nome/GTIN do medicamento";
+"ReportError"="Reportar Erro";
+"WhatsHappen"="Conte-nos o que aconteceu";
+"ButtonSend"="Enviar";
+"ButtonCancel"="Cancelar";
