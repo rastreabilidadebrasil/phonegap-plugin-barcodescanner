@@ -21,7 +21,8 @@
     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
       <string>$CAMERA_USAGE_DESCRIPTION</string>
     </config-file>
-      <resource-file src="src/ios/*.lproj"/>
+      <resource-file src="src/ios/en.lproj/Localizable.strings" target="en.lproj/Localizable.strings"/>
+      <resource-file src="src/ios/pt-BR.lproj/Localizable.strings" target="pt-BR.lproj/Localizable.strings"/>
     <resource-file src="src/ios/scannerOverlay.xib"/>
     <resource-file src="src/ios/CDVBarcodeScanner.bundle"/>
       <resource-file src="src/ios/videos.png"/>
