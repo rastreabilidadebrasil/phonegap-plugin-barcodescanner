@@ -22,8 +22,7 @@
       <string>$CAMERA_USAGE_DESCRIPTION</string>
     </config-file>
 
-      <resource-file src="src/ios/pt-BR.lproj" />
-      <resource-file src="src/ios/en.lproj/Localizable.strings" target="/" />
+
     <resource-file src="src/ios/scannerOverlay.xib"/>
     <resource-file src="src/ios/CDVBarcodeScanner.bundle"/>
       <resource-file src="src/ios/videos.png"/>
@@ -56,6 +55,7 @@
     <framework src="CoreGraphics.framework"/>
     <framework src="CoreImage.framework"/>
     <framework src="AudioToolbox.framework"/>
+
   </platform>
   <platform name="android">
     <source-file src="src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java" target-dir="src/com/phonegap/plugins/barcodescanner"/>
