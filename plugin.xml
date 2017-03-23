@@ -21,6 +21,8 @@
     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
       <string>$CAMERA_USAGE_DESCRIPTION</string>
     </config-file>
+
+
     <resource-file src="src/ios/scannerOverlay.xib"/>
     <resource-file src="src/ios/CDVBarcodeScanner.bundle"/>
       <resource-file src="src/ios/videos.png"/>
@@ -36,6 +38,12 @@
       <resource-file src="src/ios/bulas.png"/>
       <resource-file src="src/ios/share_via_barcode.png"/>
       <resource-file src="src/ios/menu.png"/>
+      <config-file target="*-Info.plist" parent="CFBundleLocalizations">
+          <array>
+              <string>en</string>
+              <string>pt-BR</string>
+          </array>
+      </config-file>
     <header-file src="src/ios/zxing-all-in-one.h"/>
     <source-file src="src/ios/CDVBarcodeScanner.mm" compiler-flags="-fno-objc-arc"/>
     <source-file src="src/ios/zxing-all-in-one.cpp"/>
@@ -47,6 +55,7 @@
     <framework src="CoreGraphics.framework"/>
     <framework src="CoreImage.framework"/>
     <framework src="AudioToolbox.framework"/>
+
   </platform>
   <platform name="android">
     <source-file src="src/android/com/phonegap/plugins/barcodescanner/BarcodeScanner.java" target-dir="src/com/phonegap/plugins/barcodescanner"/>
@@ -81,7 +90,7 @@
       <uses-feature android:name="android.hardware.camera" android:required="true"/>
     </config-file>
     <framework src="src/android/barcodescanner.gradle" custom="true" type="gradleReference"/>
-    <resource-file src="src/android/barcodescanner-release-RB-1.0.3.aar" target="libs/barcodescanner.aar"/>
+    <resource-file src="src/android/barcodescanner-release-RB-1.0.5.aar" target="libs/barcodescanner.aar"/>
     <dependency id="cordova-plugin-compat" version="^1.0.0"/>
   </platform>
   <platform name="windows">
