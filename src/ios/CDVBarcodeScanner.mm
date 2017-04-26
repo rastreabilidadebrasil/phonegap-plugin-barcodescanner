@@ -917,12 +917,12 @@ bool flashOn = NO;
                 [device setTorchMode:AVCaptureTorchModeOff];
                 [device setFlashMode:AVCaptureFlashModeOff];
                 flashOn = NO;
-                [self.flashButton setTitle:@"\uf2e8" forState: UIControlStateNormal];
+                [self.flashButton setTitle:@"\uf17d" forState: UIControlStateNormal];
             } else {
                 [device setTorchMode:AVCaptureTorchModeOn];
                 [device setFlashMode:AVCaptureFlashModeOn];
                 flashOn = YES; //define as a variable/property if you need to know status
-                [self.flashButton setTitle:@"\uf2e9" forState: UIControlStateNormal];
+                [self.flashButton setTitle:@"\uf17e" forState: UIControlStateNormal];
 
             }
             [device unlockForConfiguration];
@@ -1092,7 +1092,7 @@ bool isErrorButtonShown = false;
     [self.searchTextButton setTitle:@"\uf4a5" forState: UIControlStateNormal];
     [self.reportErrorButton setTitle:@"\uf3a5" forState: UIControlStateNormal];
     [self.homeButton setTitle:@"\uf30c" forState: UIControlStateNormal];
-    [self.flashButton setTitle:@"\uf2e8" forState: UIControlStateNormal];
+    [self.flashButton setTitle:@"\uf17d" forState: UIControlStateNormal];
 
     self.searchTextField.placeholder = NSLocalizedString(@"MedicineName", @"");
 
